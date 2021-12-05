@@ -41,7 +41,7 @@ int main(){
 	}
 	close(file);
 	file = open("story.txt", O_WRONLY, O_APPEND);
-	fgets(c, strlen(c), stdin);
+	fgets(c, 100, stdin);
 	write(file, c, strlen(c));
 	printf("%s\n", c);
 	close(file);
