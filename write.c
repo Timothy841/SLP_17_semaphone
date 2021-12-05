@@ -39,7 +39,7 @@ int main(){
 		printf("New story: \n");
 	}
 	close(file);
-	file = open("story.txt", O_WRONLY, O_APPEND);
+	file = open("story.txt", O_WRONLY | O_APPEND);
 	fgets(c, 100, stdin);
 	write(file, c, strlen(c));
 	close(file);
