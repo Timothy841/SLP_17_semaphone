@@ -28,6 +28,7 @@ int main(){
 	int *line = shmat(shmd, 0, 0);
 	struct stat info;
 	stat("story.txt", &info);
+	printf("sdfd\n" );
 	int file = open("story.txt", O_RDONLY);
 	if (info.st_size > 0){
 		lseek(file, *line * -1, SEEK_END);
