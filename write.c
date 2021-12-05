@@ -14,7 +14,7 @@
 
 int main(){
 	int semd = semget(SEMKEY, 0, 0); //get access
-	int shmd = semget(SHMKEY, 0, 0);
+	int shmd = shmget(SHMKEY, 0, 0);
 	if (semd == -1){
 		printf("Semaphore doesn't exist. Create one first.\n");
 		return 0;
