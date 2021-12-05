@@ -24,9 +24,7 @@ int main(){
 	sb.sem_num = 0;
 	sb.sem_flg = SEM_UNDO;
 	sb.sem_op = -1; //setting the operation to down
-	printf("hello\n" );
 	semop(semd, &sb, 1); //perform the operation
-	printf("hello\n" );
 	int *line = shmat(shmd, 0, 0);
 	struct stat info;
 	stat("story.txt", &info);
@@ -43,7 +41,6 @@ int main(){
 	file = open("story.txt", O_WRONLY, O_APPEND);
 	fgets(c, 100, stdin);
 	write(file, c, strlen(c));
-	printf("%s\n", c);
 	close(file);
 	shmdt(line);
 	sb.sem_op = 1; //set the operation to up
