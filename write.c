@@ -29,10 +29,10 @@ int main(){
 	struct stat info;
 	stat("story.txt", &info);
 	int file = open("story.txt", O_RDONLY);
-	if (file.st_size > 0){
+	if (info.st_size > 0){
 		lseek(file, *line * -1, SEEK_END);
 		read(file, c, *line);
-		printf("Current line: $s\n", c);
+		printf("Current line: %s\n", c);
 	}
 	else{
 		printf("New story: \n");
