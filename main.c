@@ -46,6 +46,7 @@ int main(int argc, char *argv[]){
       int file = open("story.txt", O_RDONLY);
 			struct stat info;
 			stat("story.txt", &info);
+      printf("%d\n", info.st_size);
 			char *story = malloc(info.st_size + 1);
 			story[info.st_size] = '\0';
 			read(file, story, info.st_size);
