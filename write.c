@@ -22,7 +22,7 @@ int main(){
 	char c[100];
 	struct sembuf sb;
 	sb.sem_num = 0;
-	sb.sem_flg = SEM_UNDO;
+	sb.sem_flg = 0;
 	sb.sem_op = -1; //setting the operation to down
 	printf("hello\n" );
 	semop(semd, &sb, 1); //perform the operation
