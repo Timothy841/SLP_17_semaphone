@@ -43,6 +43,7 @@ int main(){
 	file = open("story.txt", O_WRONLY, O_APPEND);
 	fgets(c, strlen(c), stdin);
 	write(file, c, strlen(c));
+	printf("%s\n", c);
 	close(file);
 	shmdt(line);
 	sb.sem_op = 1; //set the operation to up
