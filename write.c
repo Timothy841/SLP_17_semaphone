@@ -10,6 +10,6 @@ int main(){
 	int shmd;
 	shmd = semget(KEY, 0, 0);
 	if (shmd == -1){
-		printf("No Semaphore. Please create one first.\n")l
+		printf("No Semaphore. Please create one first.\n");
 	}
 }
