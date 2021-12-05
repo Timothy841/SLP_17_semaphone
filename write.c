@@ -12,6 +12,7 @@ int main(){
 	sb.sem_num = 0;
 	sb.sem_flg = SEM_UNDO;
 	sb.sem_op = -1; //setting the operation to down
+	printf("ds\n");
 	semop(semd, &sb, 1); //perform the operation
 	printf("got the semaphore!\n");
 	printf("sd\n"); //simulate doing something.
