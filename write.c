@@ -12,4 +12,8 @@ int main(){
 	if (shmd == -1){
 		printf("No Semaphore. Please create one first.\n");
 	}
+	Down(shmd);
+	printf("%s\n", "es");
+	wait(1000);
+	printf("%s\n", "es");
 }
