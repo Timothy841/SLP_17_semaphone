@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
+#include <sys/shm.h>
 #include <fcntl.h>
 #include <unistd.h>
 #define SEMKEY 1232
@@ -19,9 +21,8 @@ union semun {
 int main(int argc, char *argv[]){
 	if (argc >1){
 		if (strcmp(argv[1], "create") == 0){
-			int semd;
-			semd = semget(SEMKEY, 1, IPC_CREAT | IPC_EXCL | 0644);
-      shmd = shmget(SHMKEY, sizeof(int), IPC_CREAT | IPC_EXCL | 0644);
+			int semd = semget(SEMKEY, 1, IPC_CREAT | IPC_EXCL | 0644);
+      int shmd = shmget(SHMKEY, sizeof(int), IPC_CREAT | IPC_EXCL | 0644);
 			if (semd == -1){
 				printf("Semaphore already exists.\n");
 				return 0;
@@ -34,7 +35,6 @@ int main(int argc, char *argv[]){
 			return 0;
 		}
 		else if (strcmp(argv[1], "remove") == 0){
-			int semd;
 			int semd = semget(SEMKEY, 0, 0);
 			int shmd = shmget(SHMKEY, 0, 0);
 			if (semd == -1){
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]){
 			struct stat info;
 			stat("story.txt", &info);
 			char *story = malloc(info.st_size + 1);
-			story[stp.st_size] = '\0';
+			story[info.st_size] = '\0';
 			read(file, story, info.st_size);
 			printf("Story:\n%s", story);
 			free(story);
