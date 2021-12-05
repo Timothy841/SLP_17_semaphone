@@ -26,9 +26,9 @@ int main(){
 	sb.sem_op = -1; //setting the operation to down
 	semop(semd, &sb, 1); //perform the operation
 	int *line = shmat(shmd, 0, 0);
+	printf("%d\n", *line);
 	struct stat info;
 	stat("story.txt", &info);
-	printf("sdfd\n" );
 	int file = open("story.txt", O_RDONLY);
 	if (info.st_size > 0){
 		lseek(file, *line * -1, SEEK_END);
