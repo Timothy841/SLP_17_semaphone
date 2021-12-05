@@ -8,6 +8,10 @@
 
 int main(){
 	int semd = semget(KEY, 1, 0); //get access
+	if (semd == -1){
+		printf("Semaphore doesn't exist. Create one first.\n");
+		return 0;
+	}
 	struct sembuf sb;
 	sb.sem_num = 0;
 	sb.sem_flg = SEM_UNDO;
