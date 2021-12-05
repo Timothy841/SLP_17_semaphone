@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
 			}
 			union semun us;
 			us.val = 1;
-			semctl(semd, 0, SETVAL, u);
+			semctl(semd, 0, SETVAL, us);
 			int file = open("story.txt",O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			close(file);
 			return 0;
