@@ -7,13 +7,14 @@
 #define KEY 1232
 
 int main(){
-	int shmd;
-	shmd = semget(KEY, 0, 0);
-	if (shmd == -1){
-		printf("No Semaphore. Please create one first.\n");
-	}
-	Down(shmd);
-	printf("%s\n", "es");
-	wait(1000);
-	printf("%s\n", "es");
+	semd = semget(KEY, 1, 0); //get access
+	struct sembuf sb;
+	sb.sem_num = 0;
+	sb.sem_flg = SEM_UNDO;
+	sb.sem_op = -1; //setting the operation to down
+	semop(semd, &sb, 1); //perform the operation
+	printf("got the semaphore!\n");
+	sleep(10); //simulate doing something.
+	sb.sem_op = 1; //set the operation to up
+	semop(semd, &sb, 1); //perform the operation
 }
