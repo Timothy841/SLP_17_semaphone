@@ -30,7 +30,7 @@ int main(){
 	stat("story.txt", &info);
 	int file = open("story.txt", O_RDONLY);
 	if (info.st_size > 0){
-		printf("%d\n", info.st_size);
+		printf("%d\n", *line);
 		lseek(file, *line * -1, SEEK_END);
 		read(file, c, *line);
 		printf("Current line: %s\n", c);
