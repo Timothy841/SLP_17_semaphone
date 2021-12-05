@@ -26,7 +26,6 @@ int main(){
 	sb.sem_op = -1; //setting the operation to down
 	semop(semd, &sb, 1); //perform the operation
 	int *line = shmat(shmd, NULL, 0);
-	printf("%d\n", *line);
 	struct stat info;
 	stat("story.txt", &info);
 	int file = open("story.txt", O_RDONLY);
